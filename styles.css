@@ -130,7 +130,6 @@ ul li a:hover {
 
 .image img {
   width: min(20rem, 90%);
-  border-radius: 100%;
 }
 #work{
   margin-top: -100px;
