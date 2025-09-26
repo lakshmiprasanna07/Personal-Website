@@ -1,67 +1,540 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-    <title>Lakshmi Prasanna</title>
-  </head>
-  <body>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+        :root {
+            --primary-color: #2c3e50;
+            --primary-color-dark: #1a252f;
+            --text-dark: #1f2937;
+            --text-light: #6b7280;
+            --extra-light: #faf5ff;
+            --white: #ffffff;
+            --max-width: 1200px;
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: var(--extra-light);
+        }
+
+        nav {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: var(--white);
+            z-index: 99;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav__content {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 1.5rem 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo a {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            transition: 0.3s;
+        }
+
+        nav .logo a:hover {
+            color: var(--primary-color-dark);
+        }
+
+        nav .checkbox {
+            display: none;
+        }
+
+        nav input {
+            display: none;
+        }
+
+        nav .checkbox i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+
+        ul {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            list-style: none;
+            transition: left 0.3s;
+        }
+
+        ul li a {
+            padding: 0.5rem 1rem;
+            border: 2px solid transparent;
+            text-decoration: none;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: 0.3s;
+        }
+
+        ul li a:hover {
+            border-top-color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .section {
+            background-color: var(--extra-light);
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .section__container {
+            max-width: var(--max-width);
+            margin: auto;
+            padding: 1rem;
+        }
+
+        .content {
+            margin-bottom: 3rem;
+        }
+
+        .content h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            font-weight: 500;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        .content h3 {
+            color: var(--text-dark);
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .content h4 {
+            color: var(--text-dark);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .description {
+            line-height: 1.8;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .interest-tag {
+            color: var(--text-light);
+            padding: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .interest-tag::after {
+            content: " •";
+            margin-left: 0.5rem;
+        }
+
+        .interest-tag:last-child::after {
+            content: "";
+        }
+
+        .project, .research-item {
+            margin-bottom: 2rem;
+        }
+
+        .content-box {
+            background-color: var(--white);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .status {
+            display: inline;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-left: 0.5rem;
+        }
+
+        .status.under-review {
+            color: var(--text-light);
+        }
+
+        .status.in-prep {
+            color: var(--text-light);
+        }
+
+        .metrics {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .metrics strong {
+            font-weight: 600;
+        }
+
+        .tech-stack {
+            margin-top: 0.5rem;
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .tech-stack strong {
+            font-weight: 600;
+        }
+
+        .github-link {
+            color: var(--primary-color);
+            font-size: 0.95rem;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        .cv-download {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            margin-top: 1rem;
+            transition: 0.3s;
+        }
+
+        .cv-download:hover {
+            background-color: var(--primary-color-dark);
+        }
+
+        .publication-list {
+            list-style: none;
+        }
+
+        .publication-list li {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+            color: var(--text-light);
+        }
+
+        .profile-section {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .profile-text {
+            flex: 1;
+        }
+
+        .profile-image {
+            flex-shrink: 0;
+        }
+
+        .profile-image img {
+            width: 200px;
+            height: 200px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        @media (max-width: 750px) {
+            .profile-section {
+                flex-direction: column;
+            }
+            
+            .profile-image img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 750px) {
+            nav .checkbox {
+                display: block;
+            }
+
+            ul {
+                position: absolute;
+                width: 100%;
+                height: calc(100vh - 85px);
+                left: -100%;
+                top: 85px;
+                background-color: var(--extra-light);
+                flex-direction: column;
+                justify-content: center;
+                gap: 3rem;
+            }
+
+            nav #check:checked ~ ul {
+                left: 0;
+            }
+
+            ul li a {
+                font-size: 1.25rem;
+            }
+        }
+    </style>
+    <title>Lakshmi Prasanna Pandeti</title>
+</head>
+<body>
     <nav>
-      <div class="nav__content">
-        <div class="logo"><a href="#">LAKSHMI PRASANNA PANDETI</a></div>
-        <label for="check" class="checkbox">
-          <i class="ri-menu-line"></i>
-        </label>
-        <input type="checkbox" name="check" id="check" />
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#work">Work</a></li>
-        </ul>
-      </div>
+        <div class="nav__content">
+            <div class="logo"><a href="#">LAKSHMI PRASANNA PANDETI</a></div>
+            <label for="check" class="checkbox">
+                <i class="ri-menu-line"></i>
+            </label>
+            <input type="checkbox" name="check" id="check" />
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
     </nav>
+
     <section class="section">
-      <div class="section__container">
-        <div class="content">
-          <p class="description">
-            <h3>About:</h3>
-            Hello! I'm a final year IT student at Sree Vidyanikethan Engineering College, Tirupati, India.
-            My research interests are Optimization, Computing AI models, Natural Language Processing, Machine Learning and Human-Computer Interaction. 
-            I am dedicated to develop energy-efficient and responsible AI models by analyzing their computation for sustainability.
-          </p><br><br>
-          <span>To check out my Resume,&emsp;<a href="./Lakshmi_Prasanna_Pandeti_Resume.pdf">click here</a> </span>
-          <span>Email: lakshmiprasannapandeti (at) gmail (dot) com</span>
-          <br><br><br><br>
+        <div class="section__container">
+            <div class="content" id="about">
+                <h2>About</h2>
+                <div class="profile-section">
+                    <div class="profile-text">
+                        <p class="description">
+                            I recently completed my Bachelor's in Information Technology at Sree Vidyanikethan Engineering College, Tirupati. 
+                            My research focuses on efficient multilingual NLP systems, particularly for under-resourced languages. I'm interested 
+                            in developing language-agnostic model architectures that enable cross-lingual transfer learning without requiring 
+                            massive computational resources.
+                        </p>
+                        <p class="description">
+                            My work addresses fundamental challenges in multilingual processing: how can we build AI systems that preserve 
+                            linguistic and cultural authenticity while remaining computationally efficient? Through character-level and subword 
+                            processing approaches, I explore scalable solutions for languages that lack extensive training data.
+                        </p>
+                    </div>
+                    <div class="profile-image">
+                        <img src="profile.jpeg" alt="Lakshmi Prasanna Pandeti" />
+                    </div>
+                </div>
+                <div class="interests">
+                    <span class="interest-tag">Efficient Multilingual NLP</span>
+                    <span class="interest-tag">Under-Resourced Languages</span>
+                    <span class="interest-tag">Cross-Lingual Transfer</span>
+                    <span class="interest-tag">Character-Level Processing</span>
+                    <span class="interest-tag">Language-Agnostic Architectures</span>
+                </div>
+                <a href="#" class="cv-download">Download CV</a>
+            </div>
+
+            <div class="content" id="research">
+                <h2>Research</h2>
+                <div class="content-box">
+                    <div class="research-item">
+                        <h3>Multilingual Web Automation with Dynamic Model Selection <span class="status under-review">(Under Review)</span></h3>
+                        <p class="description"><em>August 2024 - Present</em></p>
+                        <p class="description">
+                            Developed MultiChar, a resource-efficient neural framework for cross-lingual web automation that dynamically 
+                            routes between character-level and subword-level models based on morphological complexity and task requirements.
+                        </p>
+                        <div class="metrics">
+                            <strong>Key Results:</strong> 83-89% precision in form filling, >90% in data extraction, 88-95% success in 
+                            navigation across German, French, Arabic, and English
+                        </div>
+                        <p class="description">
+                            <strong>Technical Approach:</strong> Implemented a learned model selector (89.3% accuracy) and language-specific 
+                            adapters requiring only 1.5% additional parameters per language. The system achieves 14.2% improvement over 
+                            language-agnostic approaches.
+                        </p>
+                        <p class="tech-stack"><strong>Methods:</strong> Character-level MLM, SentencePiece tokenization, Transformer 
+                        architectures, adapter modules</p>
+                        <p class="description"><strong>Status:</strong> Paper under review at ACL ARR; Provisional patent filed in India</p>
+                    </div>
+
+                    <div class="research-item">
+                        <h3>AI Model Optimization through Structured Pruning <span class="status">(Accepted)</span></h3>
+                        <p class="description"><em>March 2024 - July 2024</em></p>
+                        <p class="description">
+                            Investigated parameter-efficient optimization by applying structured pruning and fine-tuning on BERT and GAN 
+                            models using the COCO dataset.
+                        </p>
+                        <div class="metrics">
+                            <strong>Key Results:</strong> Reduced BERT inference time by 8% while improving accuracy through 46% loss reduction; 
+                            Achieved 30% pruning on BERT and 50% on GAN while maintaining stable performance
+                        </div>
+                        <p class="tech-stack"><strong>Methods:</strong> L2-norm structured pruning, gradient accumulation, ensemble evaluation</p>
+                        <p class="description"><strong>Publication:</strong> Accepted at ICONDEEPCOM 2025 (Springer)</p>
+                    </div>
+
+                    <div class="research-item">
+                        <h3>Deep Learning for Parkinson's Disease Detection <span class="status in-prep">(In Preparation)</span></h3>
+                        <p class="description"><em>January 2024 - May 2024</em></p>
+                        <p class="description">
+                            Developed ensemble deep learning system for Parkinson's disease detection using EEG signals, combining multiple 
+                            neural architectures with multi-modal feature extraction.
+                        </p>
+                        <div class="metrics">
+                            <strong>Key Results:</strong> 99.7% accuracy on 12-subject dataset through ensemble of Random Forest, CNN-LSTM, 
+                            and Transformer models
+                        </div>
+                        <p class="description">
+                            <strong>Technical Approach:</strong> Implemented preprocessing pipeline with ICA artifact removal, extracted 
+                            spectral, temporal, wavelet, and connectivity features across five frequency bands.
+                        </p>
+                        <p class="tech-stack"><strong>Methods:</strong> EEG signal processing, ICA, wavelet transforms, ensemble learning</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content" id="publications">
+                <h2>Publications</h2>
+                <div class="content-box">
+                    <div class="project">
+                        <p class="description">
+                            <strong>Lakshmi Prasanna Pandeti.</strong> "MultiChar: A Resource-Efficient Character and Subword Model for 
+                            Multilingual Web Automation." <em>Under review at ACL ARR.</em>
+                        </p>
+                    </div>
+                    <div class="project">
+                        <p class="description">
+                            <strong>Kasarapu Ramani, Lakshmi Prasanna Pandeti, Thunga Reddy Sathvika.</strong> "Efficient AI Resource 
+                            Optimization using Structured Pruning and Fine Tuning on BERT and GAN Model." <em>Accepted at ICONDEEPCOM 2025, 
+                            Springer.</em>
+                        </p>
+                    </div>
+                    <div class="project">
+                        <p class="description">
+                            <strong>Lakshmi Prasanna Pandeti.</strong> "Parkinson's Disease Detection Using EEG Data with Novel Deep Learning 
+                            Architectures." <em>In preparation for IEEE conference.</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content" id="projects">
+                <h2>Projects</h2>
+                <div class="content-box">
+                    <div class="project">
+                        <h3>Smart Assistive Device for Visually Impaired People</h3>
+                        <p class="description"><em>Final Year Project (Team Leader)</em></p>
+                        <p class="description">
+                            Developed a real-time assistive device that detects weapons and unusual activities using computer vision, 
+                            providing audio feedback to visually impaired users. The system combines object detection with distance measurement.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> YOLOv9, Ultrasonic sensors, Raspberry Pi</p>
+                    </div>
+
+                    <div class="project">
+                        <h3>AI Mathematical Olympiad (AIMO2) - Kaggle</h3>
+                        <p class="description"><em>Ranked 1056/2212</em></p>
+                        <p class="description">
+                            Fine-tuned DeepSeek-R1 Distill Qwen-7B for olympiad-level mathematical reasoning. Implemented efficient inference 
+                            using vLLM framework with tensor parallelism across 4 GPUs.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> DeepSeek-R1, vLLM, tensor parallelism</p>
+                        <a href="https://github.com/lakshmiprasanna07/AIMO2" class="github-link" target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3>Automated Code Patch Generation - Konwinski Prize</h3>
+                        <p class="description"><em>Ranked 412/617</em></p>
+                        <p class="description">
+                            Developed automated system for generating code patches to fix bugs in software repositories using StarCoder2-3B 
+                            with FP16 precision optimization.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> StarCoder2-3B, Hugging Face Transformers, CUDA</p>
+                        <a href="https://github.com/lakshmiprasanna07/Konwinski-Prize" class="github-link" target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3>Child Mind Institute - Problematic Internet Use</h3>
+                        <p class="description"><em>Ranked 3188/3559</em></p>
+                        <p class="description">
+                            Built ensemble machine learning solution for predicting internet use severity using VotingRegressor with XGBoost, 
+                            LightGBM, CatBoost, and TabNet achieving 0.513 QWK.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> XGBoost, LightGBM, CatBoost, TabNet</p>
+                        <a href="https://github.com/lakshmiprasanna07/Child-Mind-Institute-problematic-Internet-Use" class="github-link" 
+                        target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3>Whisper-Based Semantic Chunking</h3>
+                        <p class="description">
+                            Built Django application for semantic chunking of YouTube videos. Automatically extracts audio, detects language, 
+                            and generates timestamped audio-text pairs using Whisper medium-size model.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> Whisper, Django, automatic language detection</p>
+                        <a href="https://github.com/lakshmiprasanna07/Semantic-Chunking-of-a-Youtube-Video-using-Whisper" class="github-link" 
+                        target="_blank">View on GitHub →</a>
+                    </div>
+
+                    <div class="project">
+                        <h3>Web Scraping and EDA</h3>
+                        <p class="description">
+                            Developed automated data collection pipeline using BeautifulSoup and applied exploratory data analysis with 
+                            visualization to uncover patterns in scraped data.
+                        </p>
+                        <p class="tech-stack"><strong>Technologies:</strong> BeautifulSoup, Pandas, data visualization</p>
+                        <a href="https://github.com/lakshmiprasanna07/Web-Scraping-and-EDA-of-a-website" class="github-link" 
+                        target="_blank">View on GitHub →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content" id="contact">
+                <h2>Contact</h2>
+                <p class="description">
+                    I'm interested in research opportunities in multilingual NLP, particularly positions focusing on efficient systems 
+                    for under-resourced languages. Feel free to reach out for collaborations or discussions.
+                </p>
+                <p class="description"><strong>Email:</strong> lakshmiprasanna.lp07@gmail.com</p>
+                <p class="description"><strong>Location:</strong> Tirupati, India</p>
+                <p class="description">
+                    <a href="https://github.com/lakshmiprasanna07" target="_blank" style="color: var(--primary-color);">GitHub</a> | 
+                    <a href="https://www.linkedin.com/in/lakshmiprasanna06/" target="_blank" style="color: var(--primary-color);">LinkedIn</a> | 
+                    <a href="https://leetcode.com/u/prasanna_pandeti/" target="_blank" style="color: var(--primary-color);">LeetCode</a>
+                </p>
+            </div>
         </div>
-        <div class="image">
-          <img src="profile.jpeg" alt="profile" />
-        </div>
-      
-        <div id="work">
-          <h4>Publications:</h4>
-          <p>Conducting research on Reducing AI Computational Power using Structured Pruning on Deep Learning Models (Ongoing)</p>
-          <h4>Projects:</h4>
-          <h6 style="font-size: 15px;">Smart Assistive Device for Visually Impaired People (Ongoing)</h6>
-          <div class="project">
-            It detects the weapons and unusual activities by captivating them with the in-built camera and provides audio feedback to the user about that activity
-          </div>
-          <h6 style="font-size: 15px;">Virtual Mouse using AI</h6>
-          <div class="project">
-            It tracks hand movements, recognize gestures and translate them into commands, providing users with an intuitive and efficient interacting with computing devices
-          </div>
-          <h6 style="font-size: 15px;">Text Summarizer using T5 Model</h6>
-          <div class="project">
-            It does abstract text summarization on the uploaded file and also converts the summarized text into MP3.
-          </div>
-          
-        </div>
-      </div>
     </section>
-    
-  </body>
+</body>
 </html>
