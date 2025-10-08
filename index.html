@@ -244,6 +244,39 @@
             background-color: var(--primary-color-dark);
         }
 
+        .action-links {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
         .publication-list {
             list-style: none;
         }
@@ -284,6 +317,15 @@
             .profile-image img {
                 width: 150px;
                 height: 150px;
+            }
+
+            .action-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .social-links {
+                width: 100%;
             }
         }
 
@@ -356,13 +398,25 @@
                     </div>
                 </div>
                 <div class="interests">
-                    <span class="interest-tag">Efficient Multilingual NLP</span>
-                    <span class="interest-tag">Under-Resourced Languages</span>
-                    <span class="interest-tag">Cross-Lingual Transfer</span>
-                    <span class="interest-tag">Character-Level Processing</span>
-                    <span class="interest-tag">Language-Agnostic Architectures</span>
+                    <span class="interest-tag">Multilingual Natural Language Processing</span>
+                    <span class="interest-tag">Cross-Lingual Transfer Learning</span>
+                    <span class="interest-tag">Speech Processing</span>
+                    <span class="interest-tag">Resource-Efficient AI Systems</span>
                 </div>
-                <a href="#" class="cv-download">Download CV</a>
+                <div class="action-links">
+                    <a href="#" class="cv-download">Download CV</a>
+                    <div class="social-links">
+                        <a href="https://github.com/lakshmiprasanna07" target="_blank" class="social-link" title="GitHub">
+                            <i class="ri-github-fill"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lakshmiprasanna06/" target="_blank" class="social-link" title="LinkedIn">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="https://leetcode.com/u/prasanna_pandeti/" target="_blank" class="social-link" title="LeetCode">
+                            <i class="ri-code-s-slash-line"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
             <div class="content" id="research">
@@ -517,14 +571,8 @@
                 <h2>Contact</h2>
                 <p class="description"><strong>Email:</strong> lakshmiprasannapandeti@gmail.com</p>
                 <p class="description"><strong>Location:</strong> Tirupati, India</p>
-                <p class="description">
-                    <a href="https://github.com/lakshmiprasanna07" target="_blank" style="color: var(--primary-color);">GitHub</a> | 
-                    <a href="https://www.linkedin.com/in/lakshmiprasanna06/" target="_blank" style="color: var(--primary-color);">LinkedIn</a> | 
-                    <a href="https://leetcode.com/u/prasanna_pandeti/" target="_blank" style="color: var(--primary-color);">LeetCode</a>
-                </p>
             </div>
         </div>
     </section>
 </body>
 </html>
-
