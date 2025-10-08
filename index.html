@@ -252,29 +252,16 @@
             flex-wrap: wrap;
         }
 
-        .social-links {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .social-link {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: var(--white);
-            border: 2px solid var(--primary-color);
+        .action-links a:not(.cv-download) {
             color: var(--primary-color);
-            font-size: 1.2rem;
             transition: 0.3s;
+            line-height: 1;
+            padding-top: 0.25rem;
         }
 
-        .social-link:hover {
-            background-color: var(--primary-color);
-            color: var(--white);
+        .action-links a:not(.cv-download):hover {
+            color: var(--primary-color-dark);
+            text-decoration: underline;
         }
 
         .publication-list {
@@ -317,15 +304,6 @@
             .profile-image img {
                 width: 150px;
                 height: 150px;
-            }
-
-            .action-links {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .social-links {
-                width: 100%;
             }
         }
 
@@ -405,17 +383,9 @@
                 </div>
                 <div class="action-links">
                     <a href="#" class="cv-download">Download CV</a>
-                    <div class="social-links">
-                        <a href="https://github.com/lakshmiprasanna07" target="_blank" class="social-link" title="GitHub">
-                            <i class="ri-github-fill"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/lakshmiprasanna06/" target="_blank" class="social-link" title="LinkedIn">
-                            <i class="ri-linkedin-fill"></i>
-                        </a>
-                        <a href="https://leetcode.com/u/prasanna_pandeti/" target="_blank" class="social-link" title="LeetCode">
-                            <i class="ri-code-s-slash-line"></i>
-                        </a>
-                    </div>
+                    <a href="https://github.com/lakshmiprasanna07" target="_blank">GitHub</a>
+                    <a href="https://www.linkedin.com/in/lakshmiprasanna06/" target="_blank">LinkedIn</a>
+                    <a href="https://leetcode.com/u/prasanna_pandeti/" target="_blank">LeetCode</a>
                 </div>
             </div>
 
@@ -457,7 +427,6 @@
                         <p class="tech-stack"><strong>Methods:</strong> L2-norm structured pruning, gradient accumulation, ensemble evaluation</p>
                         <p class="description"><strong>Publication:</strong> Accepted at ICONDEEPCOM 2025</p>
                     </div>
-
                 </div>
             </div>
 
@@ -472,7 +441,7 @@
                     </div>
                     <div class="project">
                         <p class="description">
-                            <strong>Lakshmi Prasanna Pandeti, Kasarapu Ramani, Thunga Reddy Sathvika.</strong> "Efficient AI Resource 
+                            <strong>Kasarapu Ramani, Lakshmi Prasanna Pandeti, Thunga Reddy Sathvika.</strong> "Efficient AI Resource 
                             Optimization using Structured Pruning and Fine Tuning on BERT and GAN Model." <em>Accepted at ICONDEEPCOM 2025.</em>
                         </p>
                     </div>
@@ -559,4 +528,3 @@
     </section>
 </body>
 </html>
-
